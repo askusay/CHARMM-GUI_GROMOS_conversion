@@ -1,7 +1,9 @@
 # CHARMM-GUI_GROMOS_conversion_tutorial
 CHARMM-GUI creates systems ready for simulation but with charmm parameters, this can be converted to the amber format using `charmmlipid2amber.py`. Conversion to a united atom forcefield like `GROMOS-54A7` requires changing the number of atoms to a united atom represenation which is not supported by `charmmlipid2amber.py`.
 
-The `convert_molecules.py` script developed here enables AA to UA conversion using templates, i.e. the included `charmm_to_gromos.yaml` file, see figure below:
+The `convert_molecules.py` script developed here enables all-atom (AA) to united-atom (UA) conversion using templates, i.e. the included `charmm_to_gromos.yaml` file. The code does have checkes in place, but double check your conversions and pay attention to any warning about atom names emitted from grompp!
+
+This tool also enables conversion of AA ligand pdb files to UA ATB files. I.e. if you have done ligand docking in all atom represenation and want to change the atom/residue names of the docked ligand based on ATB files.
 
 ![](aa_ua_conv.png)
 
@@ -39,7 +41,7 @@ cat NCT_prot_aln.pdb step5_mem_ion.pdb > NCT_comb.pdb
 ```
 convert_molecules.py NCT_comb.pdb NCT_comb_conv.pdb charmm_to_gromos.yaml
 ```
-*Notes*:
+*Note*:
 
 POPC conversion corresponds with ([Poger et. al 2009](https://pubs.acs.org/doi/abs/10.1021/ct900487a))
 
@@ -60,7 +62,12 @@ gmx editconf -f NCT_comb_conv.pdb -o NCT_comb_box.pdb -box 11.1522525 11.1522525
 ```
 
 ### Notes on creating templates:
-1. Copy the atom and residue names from the united atom file (format as in the provided template)
+Each line in the `conversions` is formatted as `[source_numbering, source, template]`
+1. Open the united-atom and AA pdb files in a visualisation software like PyMOL and label the atoms by name
+   * Helps to use [`grid mode`](https://pymolwiki.org/index.php/Grid_mode)
+3. Copy the atom and residue names from the united-atom pdb file to the `template` column
     * Helps to use code editors like VS code with column selection mode
     ![](giphy.gif)
-
+2. Copy the corresponding atom/residue names from the AA pdb file to the `source` column
+3. Copy the corresponding atomic index from the AA pdb file to the `source_numbering` column 
+    * **IMPORTANT:** AA file must have atoms numbered from **1**
