@@ -60,6 +60,7 @@ gmx editconf -f NCT_comb_conv.pdb -o NCT_comb_box.pdb -box 11.1522525 11.1522525
 ```
 gmx editconf -f NCT_comb_conv.pdb -o NCT_comb_box.pdb -box 11.1522525 11.1522525 15.2889 -angles 90 90 60 -bt triclinic
 ```
+**IMPORTANT:** if the charge is not zero, run [`genion`](https://manual.gromacs.org/documentation/5.1/onlinehelp/gmx-genion.html) or remove the appropriate number of ions for neutrality
 
 ### Notes on creating templates:
 Each line in the `conversions` is formatted as `[source_numbering, source, template]`
