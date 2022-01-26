@@ -3,4 +3,4 @@ CHARMM-GUI creates systems ready for simulation but with charmm parameters, this
 
 The `convert_molecules.py` script developed here enables AA to UA conversion using templates, i.e. the included `charmm_to_gromos.yaml` file, see figure below:
 
-![](ua_aa_conv.png)
+![](aa_ua_conv.png)
