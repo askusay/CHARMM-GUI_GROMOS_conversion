@@ -8,9 +8,9 @@ This tool also enables conversion of AA ligand pdb files to UA ATB files. I.e. i
 ![](aa_ua_conv.png)
 
 ## Tutorial
-*Files for this tutorial may be found in XXX*
+*Files for this tutorial may be found in tutorial-files*
 * Here I have generated a small CHARMM-GUI system `step5_input.pdb` (nAChR with nicotine bound and embedded in POPC membrane)
-* The `step5_assembly.str`
+* The `step5_assembly.str` contains information about the system size
 * The `NCT_prot_het.pdb` file was created by processing the protein through [`pdb2gmx`](https://manual.gromacs.org/documentation/2021/onlinehelp/gmx-pdb2gmx.html) and adding the ligand (nicotine) to the file.
     * Used the GROMOS-54A7 forcefield for the ligand 
     * Generated parameters for nicotine using ATB, [they can be found here](https://atb.uq.edu.au/molecule.py?molid=703425)
