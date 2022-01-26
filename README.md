@@ -10,8 +10,8 @@ The `convert_molecules.py` script developed here enables AA to UA conversion usi
 * Here I have generated a small CHARMM-GUI system `step5_input.pdb` (nAChR with nicotine bound and embedded in POPC membrane)
 * The `step5_assembly.str`
 * The `NCT_prot_het.pdb` file was created by processing the protein through [`pdb2gmx`](https://manual.gromacs.org/documentation/2021/onlinehelp/gmx-pdb2gmx.html) and adding the ligand (nicotine) to the file.
-  * Used the GROMOS-54A7 forcefield for the ligand 
-  * Generated parameters for nicotine using ATB, [they can be found here](https://atb.uq.edu.au/molecule.py?molid=703425)
+    * Used the GROMOS-54A7 forcefield for the ligand 
+    * Generated parameters for nicotine using ATB, [they can be found here](https://atb.uq.edu.au/molecule.py?molid=703425)
 
 ### Inserting the UA-protein into the CHARMM-GUI system
 1. Load both `step5_input.pdb` and `NCT_prot_het.pdb` into VMD (assuming they have molid 0 1 respectively)
@@ -25,12 +25,42 @@ $all move [measure fit $target $ref]
 3. Optional step, if your protein is not centered in the box, i.e. poking out the top, use the [`shift_solvent.tcl`](https://github.com/askusay/MD_box_fixer) vmd scritpt to fix it
 4. Save the adjusted `NCT_prot_het` structure -> `NCT_prot_aln.pdb`
 5. Save the `step5_input` structure without the protein or ligand atoms -> `step5_mem_ion.pdb`:
-  * Example selection: `not (segid "PRO[A-Z]" "HET[A-Z]")`
+    * Example selection: `not (segid "PRO[A-Z]" "HET[A-Z]")`
 6. Combine the `NCT_prot_aln.pdb` and `step5_mem_ion.pdb` files:
 
 ```
 cat NCT_prot_aln.pdb step5_mem_ion.pdb > NCT_comb.pdb
 ```
-* **IMPORTANT:** remove the **END** and **CRYST1** lines between the atoms in the joined files!
+**IMPORTANT:** remove the **END** and **CRYST1** lines between the atoms in the joined files!
+
+
 
 ### Running `convert_molecules.py`:
+```
+convert_molecules.py NCT_comb.pdb NCT_comb_conv.pdb charmm_to_gromos.yaml
+```
+*Notes*:
+
+POPC conversion corresponds with ([Poger et. al 2009](https://pubs.acs.org/doi/abs/10.1021/ct900487a))
+
+
+
+### Running `GMX editconf`
+*[GMX editconf](https://manual.gromacs.org/documentation/current/onlinehelp/gmx-editconf.html) is required to set the box dimentions for running PBC simulations*
+* Extract info about system size from `step5_assembly.str`: `A length: 111.618775, B length: 111.618775, C length: 150.889`
+    * *If you have used the `shift_solvent.tcl` in step 4, \
+      add ~2 angstrom padding to the vertical C dimention, i.e. 150.889 -> 152.889* 
+* For rectangular systems:
+```
+gmx editconf -f NCT_comb_conv.pdb -o NCT_comb_box.pdb -box 11.1522525 11.1522525 15.2889
+```
+* For hexagonal (triclinic) boxes 
+```
+gmx editconf -f NCT_comb_conv.pdb -o NCT_comb_box.pdb -box 11.1522525 11.1522525 15.2889 -angles 90 90 60 -bt triclinic
+```
+
+### Notes on creating templates:
+1. Copy the atom and residue names from the united atom file (format as in the provided template)
+    * Helps to use code editors like VS code with column selection mode
+    ![](giphy.gif)
+
