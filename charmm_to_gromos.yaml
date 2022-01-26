@@ -1,0 +1,100 @@
+SOD: 
+  atoms: 1
+  # source_numbering, source, template
+  conversions: 
+  - [1," SOD SOD "," NA   NA "]
+
+CLA: 
+  atoms: 1
+  # source_numbering, source, template
+  conversions: 
+  - [1," CLA CLA "," CL   CL "]
+
+TIP3:
+  atoms: 3
+  conversions:
+  # source_numbering, source, template
+  - [1," OH2 TIP3", " OW  SOL "]
+  - [2," H1  TIP3", " HW1 SOL "]
+  - [3," H2  TIP3", " HW2 SOL "]
+
+POPC: 
+  atoms: 134
+  conversions:
+  # source_numbering, source, template
+    - [5  ," C13 POPC"," CN1 POPC"]
+    - [9  ," C14 POPC"," CN2 POPC"]
+    - [13 ," C15 POPC"," CN3 POPC"]
+    - [1  ," N   POPC"," NTM POPC"]
+    - [2  ," C12 POPC"," CA  POPC"]
+    - [17 ," C11 POPC"," CB  POPC"]
+    - [23 ," O12 POPC"," OA  POPC"]
+    - [20 ," P   POPC"," P   POPC"]
+    - [21 ," O13 POPC"," OB  POPC"]
+    - [22 ," O14 POPC"," OC  POPC"]
+    - [24 ," O11 POPC"," OD  POPC"]
+    - [25 ," C1  POPC"," CC  POPC"]
+    - [28 ," C2  POPC"," CD  POPC"]
+    - [30 ," O21 POPC"," OE  POPC"]
+    - [31 ," C21 POPC"," C1A POPC"]
+    - [32 ," O22 POPC"," OF  POPC"]
+    - [33 ," C22 POPC"," C1B POPC"]
+    - [45 ," C23 POPC"," C1C POPC"]
+    - [48 ," C24 POPC"," C1D POPC"]
+    - [51 ," C25 POPC"," C1E POPC"]
+    - [54 ," C26 POPC"," C1F POPC"]
+    - [57 ," C27 POPC"," C1G POPC"]
+    - [60 ," C28 POPC"," C1H POPC"]
+    - [63 ," C29 POPC"," C1I POPC"]
+    - [65 ,"C210 POPC"," C1J POPC"]
+    - [67 ,"C211 POPC"," C1K POPC"]
+    - [70 ,"C212 POPC"," C1L POPC"]
+    - [73 ,"C213 POPC"," C1M POPC"]
+    - [76 ,"C214 POPC"," C1N POPC"]
+    - [79 ,"C215 POPC"," C1O POPC"]
+    - [82 ,"C216 POPC"," C1P POPC"]
+    - [85 ,"C217 POPC"," C1Q POPC"]
+    - [88 ,"C218 POPC"," C1R POPC"]
+    - [36 ," C3  POPC"," CE  POPC"]
+    - [39 ," O31 POPC"," OG  POPC"]
+    - [40 ," C31 POPC"," C2A POPC"]
+    - [41 ," O32 POPC"," OH  POPC"]
+    - [42 ," C32 POPC"," C2B POPC"]
+    - [92 ," C33 POPC"," C2C POPC"]
+    - [95 ," C34 POPC"," C2D POPC"]
+    - [98 ," C35 POPC"," C2E POPC"]
+    - [101," C36 POPC"," C2F POPC"]
+    - [104," C37 POPC"," C2G POPC"]
+    - [107," C38 POPC"," C2H POPC"]
+    - [110," C39 POPC"," C2I POPC"]
+    - [113,"C310 POPC"," C2J POPC"]
+    - [116,"C311 POPC"," C2K POPC"]
+    - [119,"C312 POPC"," C2L POPC"]
+    - [122,"C313 POPC"," C2M POPC"]
+    - [125,"C314 POPC"," C2N POPC"]
+    - [128,"C315 POPC"," C2O POPC"]
+    - [131,"C316 POPC"," C2P POPC"]
+
+NCT:
+  atoms: 27
+  conversions:
+  # source_numbering, source, template
+    - [ 12," C10 NCT ", " C10 QRYZ"]
+    - [  4," N2  NCT ", "  N2 QRYZ"]
+    - [ 14," HN2 NCT ", " HN2 QRYZ"]
+    - [  8," C6  NCT ", "  C6 QRYZ"]
+    - [ 18," H6  NCT ", " HC6 QRYZ"]
+    - [  9," C7  NCT ", "  C7 QRYZ"]
+    - [ 10," C8  NCT ", "  C8 QRYZ"]
+    - [ 11," C9  NCT ", "  C9 QRYZ"]
+    - [  3," C2  NCT ", "  C2 QRYZ"]
+    - [  1," C1  NCT ", "  C1 QRYZ"]
+    - [ 13," H1  NCT ", " HC1 QRYZ"]
+    - [  2," N1  NCT ", "  N1 QRYZ"]
+    - [  7," C5  NCT ", "  C5 QRYZ"]
+    - [ 17," H5  NCT ", " HC5 QRYZ"]
+    - [  6," C4  NCT ", "  C4 QRYZ"]
+    - [ 16," H4  NCT ", " HC4 QRYZ"]
+    - [  5," C3  NCT ", "  C3 QRYZ"]
+    - [ 15," H3  NCT ", " HC3 QRYZ"]
+
